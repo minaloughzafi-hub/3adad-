@@ -43,7 +43,9 @@
     );
   }
 
-  counterButton.addEventListener("click", () => {
+  // الضغط في أي مكان على الشاشة يزيد العداد، ما عدا أزرار الألوان وزر RESET
+  document.addEventListener("click", event => {
+    if (event.target.closest(".swatch, .reset-button")) return;
     if (count < MAX) count += 1;
     renderCount();
   });
